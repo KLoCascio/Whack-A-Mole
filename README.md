@@ -1,15 +1,33 @@
 # U1_MoleProject
 Unit 1 Game Project
 
-To Add:
-1. Click Sound
-2. Victory Music
-3. Victory Animation
-4. Three Secrets: 1. Moogle 2. Chocobo 3. Cait Sith
-5. Secret Success Animation ie. play animation CloudBraver if moogle == true.
-6. Victory Screen
-7. Game Over Screen
-8. How to Play
+// To Add: //
+Basics:
+01. board div
+02. good mole
+03. bad mole
+04. individual holes
+05. mole movement
+06. game over
+07. click functionality
+08. background of board
+09. background of scoreboard
+10. fonts!
+11. stop game when game over
+12. score points
+13. Limit the per click value
+
+
+Next Steps:
+01. Click Sound
+02. Victory Music
+03. Victory Animation
+04. Three Secrets: 1. Moogle 2. Chocobo 3. Cait Sith
+05. Secret Success Animation ie. play animation CloudBraver if moogle == true.
+06. Victory Screen
+07. Game Over Screen
+08. How to Play
+09. Being Game Button (with inactive screen background)
 
 Stretch:
 1. Hall of Fame at End (KRL SCORE)

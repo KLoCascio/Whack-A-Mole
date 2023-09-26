@@ -5,7 +5,6 @@ let badMoleTile
 let score = 0
 let gameOver = false
 
-
 window.onload = function() {
     startGame()
 }

@@ -65,3 +65,13 @@ main {
     border: 1px solid white;
     border-radius: 10px;
 }
+
+.info-column {
+    text-align: center;
+    flex: 1;
+}
+
+/* #infoBoard h2, 
+#infoBoard p {
+    margin: 0;
+} */
