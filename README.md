@@ -1,7 +1,19 @@
 # U1_MoleProject
 Unit 1 Game Project
 
+To Add:
+1. Click Sound
+2. Victory Music
+3. Victory Animation
+4. Three Secrets: 1. Moogle 2. Chocobo 3. Cait Sith
+5. Secret Success Animation ie. play animation CloudBraver if moogle == true.
+6. Victory Screen
+7. Game Over Screen
+8. How to Play
 
+Stretch:
+1. Hall of Fame at End (KRL SCORE)
+2. Toggle through themes? FF7/FF10/FFT?
 
 Resources: 
 1. drawio link: https://drive.google.com/file/d/1uI0YoBT-T4MBVqTlFomRyl_SyAR131Hz/view?usp=sharing
