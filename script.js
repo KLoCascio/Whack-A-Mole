@@ -2,6 +2,9 @@
 
 let activeMoleTile
 let badMoleTile
+let score = 0
+let gameOver = false
+
 
 window.onload = function() {
     startGame()
@@ -11,6 +14,7 @@ function startGame() {
     for (let i=0; i<9; i++) {
         let tile = document.createElement("div")
         tile.id = i.toString()
+        tile.addEventListener("click", pickTile)
         document.querySelector("#board").appendChild(tile)
     }
 
@@ -33,9 +37,10 @@ function placeMole() {
     let num = getRandomTile()
     if (badMoleTile && badMoleTile.id == num) {
         return
-    }
+    } else {
     activeMoleTile = document.getElementById(num)
     activeMoleTile.appendChild(mole)
+    }
 }
 
 function placeBadMole() {
@@ -48,8 +53,18 @@ function placeBadMole() {
     let num = getRandomTile()
     if (activeMoleTile && activeMoleTile.id == num) {
         return
-    }
+    } else {
     badMoleTile = document.getElementById(num)
     badMoleTile.appendChild(badMole)
+    }
 }
 
+function pickTile() {
+
+    if(this == activeMoleTile) {
+        score += 10
+        document.querySelector("#score").innerText = score.toString()
+    } else if (this == badMoleTile)
+    document.querySelector("#score").innerText = "Game Over"
+    gameOver = true
+}
