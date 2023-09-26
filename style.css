@@ -9,15 +9,17 @@ h1 {
 }
 
 #board {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    align-items: center;
     margin: 0 auto;
     height: 540px;
     width: 540px;
     background-color: white;
+    background-size: cover;
     border: 2px solid white;
-    border-radius: 25px;
+    border-radius: 20px;
 
 }
 
@@ -26,10 +28,15 @@ h1 {
     height: 180px;
     background-color: red;
     border: 2px solid white;
-    border-radius: 25px;
+    border-radius: 20px;
+    background-size: cover;
 }
 
 #board div img {
     width: 100px;
     height: 100px;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-sselect: none;
+    -moz-user-select: none;
 }

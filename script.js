@@ -18,8 +18,8 @@ function startGame() {
         document.querySelector("#board").appendChild(tile)
     }
 
-    setInterval(placeMole, 2000)
-    setInterval(placeBadMole, 1000)
+    setInterval(placeMole, 1000)
+    setInterval(placeBadMole, 3000)
 }
 
 function getRandomTile() {
@@ -28,6 +28,9 @@ function getRandomTile() {
 }
 
 function placeMole() {
+    if (gameOver) {
+        return
+    }
     if (activeMoleTile) {
         activeMoleTile.innerHTML = ""
     }
@@ -37,13 +40,15 @@ function placeMole() {
     let num = getRandomTile()
     if (badMoleTile && badMoleTile.id == num) {
         return
-    } else {
+    }
     activeMoleTile = document.getElementById(num)
     activeMoleTile.appendChild(mole)
-    }
 }
 
 function placeBadMole() {
+    if (gameOver) {
+        return
+    }
     if (badMoleTile) {
         badMoleTile.innerHTML = ""
     }
@@ -53,15 +58,16 @@ function placeBadMole() {
     let num = getRandomTile()
     if (activeMoleTile && activeMoleTile.id == num) {
         return
-    } else {
+    }
     badMoleTile = document.getElementById(num)
     badMoleTile.appendChild(badMole)
-    }
 }
 
 function pickTile() {
-
-    if(this == activeMoleTile) {
+    if (gameOver) {
+        return
+    }
+    if (this == activeMoleTile) {
         score += 10
         document.querySelector("#score").innerText = score.toString()
     } else if (this == badMoleTile)
