@@ -2,3 +2,34 @@ html {
     background-color: black;
     color: white;
 }
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    height: 540px;
+    width: 540px;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+
+}
+
+#board div {
+    width: 180px;
+    height: 180px;
+    background-color: red;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+
+#board div img {
+    width: 100px;
+    height: 100px;
+}
