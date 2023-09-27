@@ -94,7 +94,15 @@ function pickTile() {
         document.querySelector("#score").innerText = score.toString()
         const clickSound = document.querySelector("#clickSound")
         clickSound.play()
-    } else if (this == badMoleTile) {
+        // Secret One Clicked -- change sound add boolean for oneCollected
+    } else if (this == secretOneTile) {
+        score += 20
+        document.querySelector("#score").innerText = score.toString()
+        const clickSound = document.querySelector("#clickSound")
+        clickSound.play()
+        oneCollected = true
+    }
+    else if (this == badMoleTile) {
         score -= 10
         document.querySelector("#score").innerText = score.toString()
         const clickSound = document.querySelector("#clickSound")
@@ -108,9 +116,24 @@ function pickTile() {
     }
 }
 
+let oneCollected = false
+let twoCollected = false
+let threeCollected = false
 
+if (oneCollected) {
+    
+
+}
 
 console.log(gameOver)
+
+// if (oneCollected) {
+//     let secret1Icon = document.createElement("img")
+//     secret1Icon.src = "./assets/Secret1Icon.gif"
+//     let displayCase = document.querySelector("secrets-display")
+//     secret1Icon.appendChild(displayCase)
+
+// }
 
 // old clicking function. good += 10 points, bad = game over
 // function pickTile() {

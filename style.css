@@ -71,6 +71,16 @@ main {
     flex: 1;
 }
 
+#secrets-display img {
+    max-height: 180px;
+    max-width: 90px;
+    opacity: 0.5;
+}
+
+#secrets-display img.collected {
+    opacity: 1;
+}
+
 /* #infoBoard h2, 
 #infoBoard p {
     margin: 0;
