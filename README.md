@@ -3,19 +3,21 @@ Unit 1 Game Project
 
 // To Add: //
 Basics:
-01. board div
-02. good mole
-03. bad mole
-04. individual holes
-05. mole movement
-06. game over
-07. click functionality
-08. background of board
-09. background of scoreboard
-10. fonts!
-11. stop game when game over
-12. score points
+01. board div   //DONE
+02. good mole   //DONE
+03. bad mole    //DONE
+04. individual holes    //DONE
+05. mole movement   //DONE
+06. game over   //DONE
+07. click functionality //DONE
+08. background of board //DONE
+09. background of scoreboard //DONE
+10. fonts!  //DONE
+11. stop game when game over    //DONE
+12. score points    //DONE
 13. Limit the per click value
+14. REMOVE UNUSED CODE/ASSETS
+15. Remove the Timer, replace with a third 
 
 
 Next Steps:
@@ -27,11 +29,24 @@ Next Steps:
 06. Victory Screen
 07. Game Over Screen
 08. How to Play
-09. Being Game Button (with inactive screen background)
+09. Begin Game Button (with inactive screen background)
+
 
 Stretch:
 1. Hall of Fame at End (KRL SCORE)
 2. Toggle through themes? FF7/FF10/FFT?
+
+Game Play:
+1. Whack-A-Mole 
+2. Click our hero to increase your score. 
+3. Don't click the Cactuar (cactus person), or it's game over!
+4. Three surprise heroes will join you, think you can catch them?
+5. You win if you can collect all of the secret heroes!
+
+End Game Conditions: 
+1. Bad - Click the Cactuar.
+2. Good - Collect the secret heroes.
+3. Maybe set a score ceiling.
 
 Resources: 
 1. drawio link: https://drive.google.com/file/d/1uI0YoBT-T4MBVqTlFomRyl_SyAR131Hz/view?usp=sharing

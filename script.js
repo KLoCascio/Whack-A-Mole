@@ -1,7 +1,11 @@
 // console.log("Hello World!")
 
-let activeMoleTile
-let badMoleTile
+let activeMoleTile // Hero.gif
+let badMoleTile // Cactuar.gif
+let secretOneTile // Secret1.gif
+let secretTwoTile // Secret2.gif
+let secretThreeTile // Secret3.gif
+
 let score = 0
 let gameOver = false
 
@@ -34,7 +38,7 @@ function placeMole() {
         activeMoleTile.innerHTML = ""
     }
     let mole = document.createElement("img")
-    mole.src= "./assets/Cactuar.gif"
+    mole.src= "./assets/Hero.gif"
     
     let num = getRandomTile()
     if (badMoleTile && badMoleTile.id == num) {
@@ -52,7 +56,7 @@ function placeBadMole() {
         badMoleTile.innerHTML = ""
     }
     let badMole = document.createElement("img")
-    badMole.src = "./assets/FighterSprite.gif"
+    badMole.src = "./assets/Cactuar.gif"
     let num = getRandomTile()
     if (activeMoleTile && activeMoleTile.id == num) {
         return
@@ -68,11 +72,15 @@ function pickTile() {
     if (this == activeMoleTile) {
         score += 10
         document.querySelector("#score").innerText = score.toString()
+        const clickSound = document.querySelector("#clickSound")
+        clickSound.play()
     } else if (this == badMoleTile) {
     document.querySelector("#score").innerText = "Game Over"
     gameOver = true
     console.log(gameOver)
     }
 }
+
+
 
 console.log(gameOver)
