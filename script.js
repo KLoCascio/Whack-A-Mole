@@ -11,6 +11,8 @@ let gameOver = false
 let secrets = 0
 
 // global secret values
+let mole
+let badMole
 let secret1
 let secret2
 let secret3
@@ -59,7 +61,7 @@ function placeMole() {
     if (activeMoleTile) {
         activeMoleTile.innerHTML = ""
     }
-    let mole = document.createElement("img")
+    mole = document.createElement("img")
     mole.src= "./assets/Hero.gif"
     
     let num = getRandomTile()
@@ -143,7 +145,7 @@ function placeBadMole() {
     if (badMoleTile) {
         badMoleTile.innerHTML = ""
     }
-    let badMole = document.createElement("img")
+    badMole = document.createElement("img")
     badMole.src = "./assets/Cactuar.gif"
     let num = getRandomTile()
     if (activeMoleTile && activeMoleTile.id == num
@@ -165,43 +167,44 @@ function pickTile() {
         score += 10
         activeMoleTile.clicked = true
         document.querySelector("#score").innerText = score.toString()
+        //CLEAR THE TILE NEEDED
         const clickSound = document.querySelector("#clickSound")
         clickSound.play()
-        // Secret One Clicked -- change sound add boolean for oneCollected
     } else if (this == secretOneTile && !secretOneTile.clicked) {
         secrets += 1
         secretOneTile.clicked = true
         document.querySelector("#secrets").innerText = secrets.toString()
-        const clickSound = document.querySelector("#clickSound")
-        clickSound.play()
+        const secretSound = document.querySelector("#secret")
+        secretSound.play()
         oneCollected = true
         let secret1Collected = document.getElementById("display1")
         secret1Collected.classList.add("collected")
-        clearSecretTiles()
+        clearTiles()
     }  else if (this == secretTwoTile && !secretTwoTile.clicked) {
         secrets += 1
         secretTwoTile.clicked = true
         document.querySelector("#secrets").innerText = secrets.toString()
-        const secret2Sound = document.querySelector("#secret2")
-        secret2Sound.play()
+        const secretSound = document.querySelector("#secret")
+        secretSound.play()
         twoCollected = true
         let secret2Collected = document.getElementById("display2")
         secret2Collected.classList.add("collected")
-        clearSecretTiles()
+        clearTiles()
     }  else if (this == secretThreeTile && !secretThreeTile.clicked) {
         secrets += 1
         secretThreeTile.clicked = true
         document.querySelector("#secrets").innerText = secrets.toString()
-        const clickSound = document.querySelector("#clickSound")
-        clickSound.play()
+        const secretSound = document.querySelector("#secret")
+        secretSound.play()
         threeCollected = true
         let secret3Collected = document.getElementById("display3")
         secret3Collected.classList.add("collected")
-        clearSecretTiles()
+        clearTiles()
     } else if (this == badMoleTile && !badMoleTile.clicked) {
         score -= 10
         badMoleTile.clicked = true
         document.querySelector("#score").innerText = score.toString()
+        // CLEAR THE TILE NEEDED
         const clickSound = document.querySelector("#clickSound")
         clickSound.play() 
         if (score < 0){
@@ -213,7 +216,7 @@ function pickTile() {
     }
 }
 
-function clearSecretTiles() {
+function clearTiles() {
     if (oneCollected && secretOneTile.contains(secret1)) {
         clearInterval(placeSecret1Interval)
         secretOneTile.removeChild(secret1)
@@ -225,19 +228,5 @@ function clearSecretTiles() {
         secretThreeTile.removeChild(secret3)
     }
 }
-
-// not specific enough, causes error to pull an invalid child.
-// function clearSecretTiles() {
-//     if (oneCollected) {
-//         clearInterval(placeSecret1Interval)
-//         secretOneTile.removeChild(secret1)
-//     } else if (twoCollected) {
-//         clearInterval(placeSecret2Interval)
-//         secretTwoTile.removeChild(secret2)
-//     } else if (threeCollected) {
-//         clearInterval(placeSecret3Interval)
-//         secretThreeTile.removeChild(secret3)
-//     }
-// }
 
 console.log(oneCollected)
