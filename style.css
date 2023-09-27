@@ -3,7 +3,6 @@ html {
     background-color: black;
     color: white;
     font-family: 'Orbitron', sans-serif;
-
     max-width: 1000px;
     min-height: 500px;
 }
@@ -25,7 +24,7 @@ main {
 #board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr)
+    grid-template-rows: repeat(3, 1fr);
     align-items: center;
     margin: 100px auto;
     justify-content: center;

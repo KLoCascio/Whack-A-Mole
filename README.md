@@ -15,21 +15,21 @@ Basics:
 10. fonts!  //DONE
 11. stop game when game over    //DONE
 12. score points    //DONE
-13. Limit the per click value
+13. Limit the per click value //DONE
 14. REMOVE UNUSED CODE/ASSETS
-15. Remove the Timer, replace with a third 
-16. Display Secret Icons At Bottom at low transparency until collected. Full Transparency
+15. Remove the Timer, replace with a third //DONE
+16. Display Secret Icons At Bottom at low transparency until collected. Full Transparency //DONE
 
 
 Next Steps:
 01. Click Sound
 02. Victory Music
 03. Victory Animation
-04. Three Secrets: 1. Moogle 2. Chocobo 3. Cait Sith
+04. Three Secrets: 1. Vivi 2. Moogle 3. Sora //DONE
 05. Secret Success Animation ie. play animation CloudBraver if moogle == true.
 06. Victory Screen
 07. Game Over Screen
-08. How to Play
+08. How to Play //DONE
 09. Begin Game Button (with inactive screen background)
 
 
