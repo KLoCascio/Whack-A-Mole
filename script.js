@@ -8,6 +8,24 @@ let secretThreeTile // Secret3.gif
 
 let score = 0
 let gameOver = false
+let secrets = 0
+
+// global secret values
+let secret1
+let secret2
+let secret3
+
+// secrets booleans
+let oneCollected = false
+let twoCollected = false
+let threeCollected = false
+
+// setting interval IDs
+let placeMoleInterval
+let placeBadMoleInterval
+let placeSecret1Interval
+let placeSecret2Interval
+let placeSecret3Interval
 
 window.onload = function() {
     startGame()
@@ -21,9 +39,11 @@ function startGame() {
         document.querySelector("#board").appendChild(tile)
     }
 
-    setInterval(placeMole, 1000)
-    setInterval(placeBadMole, 3000)
-    setInterval(placeSecret1Tile, 2000)
+    placeMoleInterval = setInterval(placeMole, 1000)
+    placeBadMoleInterval = setInterval(placeBadMole, 3000)
+    placeSecret1Interval = setInterval(placeSecret1Tile, 1000)
+    placeSecret2Interval = setInterval(placeSecret2Tile, 1000)
+    placeSecret3Interval = setInterval(placeSecret3Tile, 1000)
 }
 
 function getRandomTile() {
@@ -31,6 +51,7 @@ function getRandomTile() {
     return num.toString()
 }
 
+// Placing the Moles and Secrets
 function placeMole() {
     if (gameOver) {
         return
@@ -42,7 +63,10 @@ function placeMole() {
     mole.src= "./assets/Hero.gif"
     
     let num = getRandomTile()
-    if (badMoleTile && badMoleTile.id == num) {
+    if (badMoleTile && badMoleTile.id == num
+        || secretOneTile && secretOneTile.id == num
+        || secretTwoTile && secretTwoTile.id == num
+        || secretThreeTile && secretThreeTile.id == num) {
         return
     }
     activeMoleTile = document.getElementById(num)
@@ -50,21 +74,66 @@ function placeMole() {
 }
 
 function placeSecret1Tile() {
-    if (gameOver) {
+    if (gameOver || oneCollected == true) {
         return
     }
     if (secretOneTile) {
         secretOneTile.innerHTML = ""
     }
-    let secret1 = document.createElement("img")
+    secret1 = document.createElement("img")
     secret1.src = "./assets/Secret1.gif"
 
     let num = getRandomTile()
-    if (badMoleTile && badMoleTile.id == num || activeMoleTile && activeMoleTile.id == num) {
+    if (activeMoleTile && activeMoleTile.id == num
+        || badMoleTile && badMoleTile.id == num
+        || secretTwoTile && secretTwoTile.id == num
+        || secretThreeTile && secretThreeTile.id == num) {
         return
     }
     secretOneTile = document.getElementById(num)
     secretOneTile.appendChild(secret1)
+}
+
+function placeSecret2Tile() {
+    if (gameOver || twoCollected == true) {
+        return
+    }
+    if (secretTwoTile) {
+        secretTwoTile.innerHTML = ""
+    }
+    secret2 = document.createElement("img")
+    secret2.src = "./assets/Secret2.gif"
+
+    let num = getRandomTile()
+    if (activeMoleTile && activeMoleTile.id == num
+        || badMoleTile && badMoleTile.id == num
+        || secretOneTile && secretOneTile.id == num
+        || secretThreeTile && secretThreeTile.id == num) {
+        return
+    }
+    secretTwoTile = document.getElementById(num)
+    secretTwoTile.appendChild(secret2)
+}
+
+function placeSecret3Tile() {
+    if (gameOver || threeCollected == true) {
+        return
+    }
+    if (secretThreeTile) {
+        secretThreeTile.innerHTML = ""
+    }
+    secret3 = document.createElement("img")
+    secret3.src = "./assets/Secret3.gif"
+
+    let num = getRandomTile()
+    if (activeMoleTile && activeMoleTile.id == num
+        || badMoleTile && badMoleTile.id == num
+        || secretOneTile && secretOneTile.id == num
+        || secretTwoTile && secretTwoTile.id == num) {
+        return
+    }
+    secretThreeTile = document.getElementById(num)
+    secretThreeTile.appendChild(secret3)
 }
 
 function placeBadMole() {
@@ -77,7 +146,10 @@ function placeBadMole() {
     let badMole = document.createElement("img")
     badMole.src = "./assets/Cactuar.gif"
     let num = getRandomTile()
-    if (activeMoleTile && activeMoleTile.id == num) {
+    if (activeMoleTile && activeMoleTile.id == num
+        || secretOneTile && secretOneTile.id == num
+        || secretTwoTile && secretTwoTile.id == num
+        || secretThreeTile && secretThreeTile.id == num) {
         return
     }
     badMoleTile = document.getElementById(num)
@@ -96,13 +168,33 @@ function pickTile() {
         clickSound.play()
         // Secret One Clicked -- change sound add boolean for oneCollected
     } else if (this == secretOneTile) {
-        score += 20
-        document.querySelector("#score").innerText = score.toString()
+        secrets += 1
+        document.querySelector("#secrets").innerText = secrets.toString()
         const clickSound = document.querySelector("#clickSound")
         clickSound.play()
         oneCollected = true
-    }
-    else if (this == badMoleTile) {
+        let secret1Collected = document.getElementById("display1")
+        secret1Collected.classList.add("collected")
+        clearSecretTiles()
+    }  else if (this == secretTwoTile) {
+        secrets += 1
+        document.querySelector("#secrets").innerText = secrets.toString()
+        const clickSound = document.querySelector("#clickSound")
+        clickSound.play()
+        twoCollected = true
+        let secret2Collected = document.getElementById("display2")
+        secret2Collected.classList.add("collected")
+        clearSecretTiles()
+    }  else if (this == secretThreeTile ) {
+        secrets += 1
+        document.querySelector("#secrets").innerText = secrets.toString()
+        const clickSound = document.querySelector("#clickSound")
+        clickSound.play()
+        threeCollected = true
+        let secret3Collected = document.getElementById("display3")
+        secret3Collected.classList.add("collected")
+        clearSecretTiles()
+    } else if (this == badMoleTile) {
         score -= 10
         document.querySelector("#score").innerText = score.toString()
         const clickSound = document.querySelector("#clickSound")
@@ -116,38 +208,31 @@ function pickTile() {
     }
 }
 
-let oneCollected = false
-let twoCollected = false
-let threeCollected = false
-
-if (oneCollected) {
-    
-
+function clearSecretTiles() {
+    if (oneCollected && secretOneTile.contains(secret1)) {
+        clearInterval(placeSecret1Interval)
+        secretOneTile.removeChild(secret1)
+    } else if (twoCollected && secretTwoTile.contains(secret2)) {
+        clearInterval(placeSecret2Interval)
+        secretTwoTile.removeChild(secret2)
+    } else if (threeCollected && secretThreeTile.contains(secret3)) {
+        clearInterval(placeSecret3Interval)
+        secretThreeTile.removeChild(secret3)
+    }
 }
 
-console.log(gameOver)
-
-// if (oneCollected) {
-//     let secret1Icon = document.createElement("img")
-//     secret1Icon.src = "./assets/Secret1Icon.gif"
-//     let displayCase = document.querySelector("secrets-display")
-//     secret1Icon.appendChild(displayCase)
-
-// }
-
-// old clicking function. good += 10 points, bad = game over
-// function pickTile() {
-//     if (gameOver) {
-//         return
-//     }
-//     if (this == activeMoleTile) {
-//         score += 10
-//         document.querySelector("#score").innerText = score.toString()
-//         const clickSound = document.querySelector("#clickSound")
-//         clickSound.play()
-//     } else if (this == badMoleTile) {
-//     document.querySelector("#score").innerText = "Game Over"
-//     gameOver = true
-//     console.log(gameOver)
+// not specific enough, causes error to pull an invalid child.
+// function clearSecretTiles() {
+//     if (oneCollected) {
+//         clearInterval(placeSecret1Interval)
+//         secretOneTile.removeChild(secret1)
+//     } else if (twoCollected) {
+//         clearInterval(placeSecret2Interval)
+//         secretTwoTile.removeChild(secret2)
+//     } else if (threeCollected) {
+//         clearInterval(placeSecret3Interval)
+//         secretThreeTile.removeChild(secret3)
 //     }
 // }
+
+console.log(oneCollected)

@@ -69,12 +69,18 @@ main {
 .info-column {
     text-align: center;
     flex: 1;
+    /* border: 1px solid white; */
 }
 
 #secrets-display img {
-    max-height: 180px;
-    max-width: 90px;
+    height: 180px;
+    width: 90px;
     opacity: 0.5;
+}
+
+#display1 {
+    height: 150px;
+    width: 80px;
 }
 
 #secrets-display img.collected {
