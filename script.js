@@ -14,7 +14,7 @@ window.onload = function() {
 }
 
 function startGame() {
-    for (let i=0; i<9; i++) {
+    for (let i=0; i<12; i++) {
         let tile = document.createElement("div")
         tile.id = i.toString()
         tile.addEventListener("click", pickTile)
@@ -23,10 +23,11 @@ function startGame() {
 
     setInterval(placeMole, 1000)
     setInterval(placeBadMole, 3000)
+    setInterval(placeSecret1Tile, 2000)
 }
 
 function getRandomTile() {
-    let num = Math.floor(Math.random() * 9)
+    let num = Math.floor(Math.random() * 12)
     return num.toString()
 }
 
@@ -48,6 +49,24 @@ function placeMole() {
     activeMoleTile.appendChild(mole)
 }
 
+function placeSecret1Tile() {
+    if (gameOver) {
+        return
+    }
+    if (secretOneTile) {
+        secretOneTile.innerHTML = ""
+    }
+    let secret1 = document.createElement("img")
+    secret1.src = "./assets/Secret1.gif"
+
+    let num = getRandomTile()
+    if (badMoleTile && badMoleTile.id == num || activeMoleTile && activeMoleTile.id == num) {
+        return
+    }
+    secretOneTile = document.getElementById(num)
+    secretOneTile.appendChild(secret1)
+}
+
 function placeBadMole() {
     if (gameOver) {
         return
@@ -65,6 +84,7 @@ function placeBadMole() {
     badMoleTile.appendChild(badMole)
 }
 
+// Click Good += 10 points, Bad -=10 points
 function pickTile() {
     if (gameOver) {
         return
@@ -75,12 +95,36 @@ function pickTile() {
         const clickSound = document.querySelector("#clickSound")
         clickSound.play()
     } else if (this == badMoleTile) {
-    document.querySelector("#score").innerText = "Game Over"
-    gameOver = true
-    console.log(gameOver)
+        score -= 10
+        document.querySelector("#score").innerText = score.toString()
+        const clickSound = document.querySelector("#clickSound")
+        clickSound.play() 
+        if (score < 0){
+            document.querySelector("#score").innerText = "Game Over"
+            gameOver = true
+            console.log(gameOver)
+
+        }
     }
 }
 
 
 
 console.log(gameOver)
+
+// old clicking function. good += 10 points, bad = game over
+// function pickTile() {
+//     if (gameOver) {
+//         return
+//     }
+//     if (this == activeMoleTile) {
+//         score += 10
+//         document.querySelector("#score").innerText = score.toString()
+//         const clickSound = document.querySelector("#clickSound")
+//         clickSound.play()
+//     } else if (this == badMoleTile) {
+//     document.querySelector("#score").innerText = "Game Over"
+//     gameOver = true
+//     console.log(gameOver)
+//     }
+// }

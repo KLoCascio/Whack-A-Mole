@@ -18,6 +18,7 @@ Basics:
 13. Limit the per click value
 14. REMOVE UNUSED CODE/ASSETS
 15. Remove the Timer, replace with a third 
+16. Display Secret Icons At Bottom at low transparency until collected. Full Transparency
 
 
 Next Steps:
@@ -44,7 +45,7 @@ Game Play:
 5. You win if you can collect all of the secret heroes!
 
 End Game Conditions: 
-1. Bad - Click the Cactuar.
+1. Bad - Score goes below 0. (Cactuar =-10 points)
 2. Good - Collect the secret heroes.
 3. Maybe set a score ceiling.
 

@@ -24,11 +24,11 @@ main {
 
 #board {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* grid-gap: 1px; */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr)
     align-items: center;
     margin: 100px auto;
-
+    justify-content: center;
     height: 540px;
     width: 540px;
     background-size: cover;
