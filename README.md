@@ -1,6 +1,8 @@
 # U1_MoleProject
 Unit 1 Game Project
 
+Deployment: https://whacka-moleff7.surge.sh/
+
 Board Screen:
 ![Secrets Collected](https://github.com/KLoCascio/U1_MoleProject/assets/143006805/50d3a346-6a6d-42f0-8b44-5673abf39dd6)
 
