@@ -4,21 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guac-A-Mole</title>
-    <audio id="clickSound" src="./assets/Click.mp3"></audio>
-    <audio id="secret" src="./assets/Secret.mp3"></audio>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
 </head>
 
 <main>
     <body> 
-        <h1>Guac-A-Mole</h1>
+        <div id="desc">
+            <h1>Whack-A-Hero</h1>
+            <button id="pauseBtn">Pause Game</button>
+        </div>
         <div id="board">
-
         </div> 
+
+        <!-- Restart button, when gameOver == true, or gameWin == true -->
+            <div id="startModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>How to Play:</h2>
+                    <p>Click our Heroes, While Avoiding the Thorns of the Cactuar!</p>
+                    <p>Collect All Three Secret Heroes to Win!</p>
+                    
+                    <div class="winning-message" id="winningMessage">
+                        <button id="playButton">Play</button>
+                    </div>
+                </div>
+            </div>
     </body>
 </main>
 
@@ -42,5 +55,5 @@
         </div>
     </div>
 </footer>
-
+<script src="script.js"></script>
 </html>

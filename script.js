@@ -31,6 +31,29 @@ let placeSecret3Interval
 
 window.onload = function() {
     startGame()
+    const pauseBtn = document.getElementById("pauseBtn")
+    if (pauseBtn) {
+        pauseBtn.onclick = function() {
+            console.log("Pause Clicked")
+          modal.style.display = "block"
+        }
+    } else {
+        console.log("pauseBtn not found")
+    }
+}
+
+const modal = document.getElementById("startModal")
+let span = document.getElementsByClassName("close")[0]
+
+span.onclick = function() {
+    console.log("Close Clicked")
+  modal.style.display = "none"
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    console.log("Window Clicked")
+    modal.style.display = "none"
+  }
 }
 
 function startGame() {
@@ -41,11 +64,11 @@ function startGame() {
         document.querySelector("#board").appendChild(tile)
     }
 
-    placeMoleInterval = setInterval(placeMole, 4000)
-    placeBadMoleInterval = setInterval(placeBadMole, 4000)
-    placeSecret1Interval = setInterval(placeSecret1Tile, 4000)
-    placeSecret2Interval = setInterval(placeSecret2Tile, 4000)
-    placeSecret3Interval = setInterval(placeSecret3Tile, 4000)
+    placeMoleInterval = setInterval(placeMole, 2000)
+    placeBadMoleInterval = setInterval(placeBadMole, 1000)
+    placeSecret1Interval = setInterval(placeSecret1Tile, 10000)
+    placeSecret2Interval = setInterval(placeSecret2Tile, 20000)
+    placeSecret3Interval = setInterval(placeSecret3Tile, 40000)
 }
 
 function getRandomTile() {
@@ -168,14 +191,11 @@ function pickTile() {
         activeMoleTile.clicked = true
         document.querySelector("#score").innerText = score.toString()
         //CLEAR THE TILE NEEDED
-        const clickSound = document.querySelector("#clickSound")
-        clickSound.play()
+        activeMoleTile.removeChild(mole)
     } else if (this == secretOneTile && !secretOneTile.clicked) {
         secrets += 1
         secretOneTile.clicked = true
         document.querySelector("#secrets").innerText = secrets.toString()
-        const secretSound = document.querySelector("#secret")
-        secretSound.play()
         oneCollected = true
         let secret1Collected = document.getElementById("display1")
         secret1Collected.classList.add("collected")
@@ -184,8 +204,6 @@ function pickTile() {
         secrets += 1
         secretTwoTile.clicked = true
         document.querySelector("#secrets").innerText = secrets.toString()
-        const secretSound = document.querySelector("#secret")
-        secretSound.play()
         twoCollected = true
         let secret2Collected = document.getElementById("display2")
         secret2Collected.classList.add("collected")
@@ -194,8 +212,6 @@ function pickTile() {
         secrets += 1
         secretThreeTile.clicked = true
         document.querySelector("#secrets").innerText = secrets.toString()
-        const secretSound = document.querySelector("#secret")
-        secretSound.play()
         threeCollected = true
         let secret3Collected = document.getElementById("display3")
         secret3Collected.classList.add("collected")
@@ -205,8 +221,6 @@ function pickTile() {
         badMoleTile.clicked = true
         document.querySelector("#score").innerText = score.toString()
         // CLEAR THE TILE NEEDED
-        const clickSound = document.querySelector("#clickSound")
-        clickSound.play() 
         if (score < 0){
             document.querySelector("#score").innerText = "Game Over"
             gameOver = true

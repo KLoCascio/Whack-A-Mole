@@ -57,3 +57,4 @@ Resources:
 5. clearInterval(): https://www.w3schools.com/jsref/met_win_clearinterval.asp
 6. Interval IDs: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
 7. contains(): https://www.w3schools.com/java/ref_string_contains.asp
+8. setTime(): https://www.w3schools.com/jsref/met_win_settimeout.asp
