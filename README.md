@@ -1,6 +1,12 @@
 # U1_MoleProject
 Unit 1 Game Project
 
+Board Screen:
+![Secrets Collected](https://github.com/KLoCascio/U1_MoleProject/assets/143006805/50d3a346-6a6d-42f0-8b44-5673abf39dd6)
+
+Pause Menu:
+![Pause:Start Menu](https://github.com/KLoCascio/U1_MoleProject/assets/143006805/712928c9-bd93-4e94-8489-bf2b737fdc82)
+
 How to Play:
 01. Click the Heroes. (+10 Points)
 02. Don't click the Cactuar. (-10 Points)
