@@ -1,53 +1,50 @@
 # U1_MoleProject
 Unit 1 Game Project
 
+How to Play:
+01. Click the Heroes. (+10 Points)
+02. Don't click the Cactuar. (-10 Points)
+03. Collect the three secret Heroes
+
+How to Win: 
+01. Collect All Three Secret Heroes.
+02. Earn at least 100 Points.
+
+How to Lose:
+01. Go below 0 points.
+
+
 // To Add: //
 Basics:
-01. board div   //DONE
-02. good mole   //DONE
-03. bad mole    //DONE
-04. individual holes    //DONE
-05. mole movement   //DONE
-06. game over   //DONE
-07. click functionality //DONE
-08. background of board //DONE
-09. background of scoreboard //DONE
-10. fonts!  //DONE
-11. stop game when game over    //DONE
-12. score points    //DONE
+01. Board divs  //DONE
+02. Good Mole   //DONE
+03. Bad Mole    //DONE
+04. Individual Hole/Tiles   //DONE
+05. Mole Movement   //DONE
+06. Game Over  //DONE
+07. Click Functionality //DONE
+08. Board BG //DONE
+09. Scoreboard BG //DONE
+10. Fonts //DONE
+11. Game Over Trigger / Conditions    //DONE
+12. Score    //DONE
 13. Limit the per click value //DONE
 14. REMOVE UNUSED CODE/ASSETS
 15. Remove the Timer, replace with a third //DONE
 16. Display Secret Icons At Bottom at low transparency until collected. Full Transparency //DONE
 
-
-Next Steps:
-01. Click Sound
-02. Victory Music
-03. Victory Animation
-04. Three Secrets: 1. Vivi 2. Moogle 3. Sora //DONE
-05. Secret Success Animation ie. play animation CloudBraver if moogle == true.
-06. Victory Screen
+Stretch:
+01. Click Sounds
+02. Victory Scene //DONE
+03. Victory Menu //DONE
+04. Victory Music //DONE
+05. Secret Success Animation ie. play animation CloudBraver if moogle == true. //DONE
+06. Add Secret Heroes //DONE
 07. Game Over Screen
 08. How to Play //DONE
-09. Begin Game Button (with inactive screen background)
-
-
-Stretch:
-1. Hall of Fame at End (KRL SCORE)
-2. Toggle through themes? FF7/FF10/FFT?
-
-Game Play:
-1. Whack-A-Mole 
-2. Click our hero to increase your score. 
-3. Don't click the Cactuar (cactus person), or it's game over!
-4. Three surprise heroes will join you, think you can catch them?
-5. You win if you can collect all of the secret heroes!
-
-End Game Conditions: 
-1. Bad - Score goes below 0. (Cactuar =-10 points)
-2. Good - Collect the secret heroes.
-3. Maybe set a score ceiling.
+09. Begin Game Button (with inactive screen background) //DONE
+10. Hall of Fame at End (KRL SCORE)
+11. Toggle through themes? FF7/FF10/FFT?
 
 Resources: 
 1. drawio link: https://drive.google.com/file/d/1uI0YoBT-T4MBVqTlFomRyl_SyAR131Hz/view?usp=sharing
@@ -57,4 +54,4 @@ Resources:
 5. clearInterval(): https://www.w3schools.com/jsref/met_win_clearinterval.asp
 6. Interval IDs: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
 7. contains(): https://www.w3schools.com/java/ref_string_contains.asp
-8. setTime(): https://www.w3schools.com/jsref/met_win_settimeout.asp
+8. setTimeOut(): https://www.w3schools.com/jsref/met_win_settimeout.asp

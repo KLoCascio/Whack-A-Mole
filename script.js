@@ -1,28 +1,25 @@
 
-let activeMoleTile // Hero.gif
-let badMoleTile // Cactuar.gif
-let secretOneTile // Secret1.gif
-let secretTwoTile // Secret2.gif
-let secretThreeTile // Secret3.gif
+let activeMoleTile
+let badMoleTile 
+let secretOneTile
+let secretTwoTile 
+let secretThreeTile
 
 let score = 0
 let secrets = 0
 let gameOver = false
 let winner
 
-// global mole values
 let mole
 let badMole
 let secret1
 let secret2
 let secret3
 
-// secrets booleans
 let oneCollected = false
 let twoCollected = false
 let threeCollected = false
 
-// setting interval IDs
 let placeMoleInterval
 let placeBadMoleInterval
 let placeSecret1Interval
@@ -56,8 +53,9 @@ menuContent.innerHTML = `
     <div id="secrets-menu">
     <img src="./assets/Secret1.gif" alt="Vivi Trophy" /> <img src="./assets/Secret2.gif" alt="Moogle Trophy" /> <img src="./assets/Secret3.gif" alt="Sora Trophy" />
     </div>
-    <p>Earn 100 Points!</p>
-    <p>Collect All Three Secret Heroes to Win!</p><button id="resumeButton">Resume</button>`
+    <div id="winReq">
+    <p>Collect All Three Secret Heroes to Win! // Earn 100 Points!</div>
+    <button id="resumeButton">Resume</button>`
 
 const resumeButton = document.querySelector("#resumeButton")
 resumeButton.onclick = function() {
@@ -92,9 +90,9 @@ function startGame() {
     winner = false
     placeMoleInterval = setInterval(placeMole, 2000)
     placeBadMoleInterval = setInterval(placeBadMole, 1000)
-    placeSecret1Interval = setInterval(placeSecret1Tile, 2000)
-    placeSecret2Interval = setInterval(placeSecret2Tile, 2000)
-    placeSecret3Interval = setInterval(placeSecret3Tile, 2000)
+    placeSecret1Interval = setInterval(placeSecret1Tile, 10000)
+    placeSecret2Interval = setInterval(placeSecret2Tile, 20000)
+    placeSecret3Interval = setInterval(placeSecret3Tile, 30000)
 }
 
 function endGame() {
@@ -113,8 +111,6 @@ function endGame() {
         location.reload()
     })
 }
-
-
 
 function clearTiles() {
     if (oneCollected && secretOneTile.contains(secret1)) {
@@ -175,6 +171,9 @@ function placeSecret1Tile() {
     }
     secretOneTile = document.getElementById(num)
     secretOneTile.appendChild(secret1)
+    setTimeout(() => {
+        secretOneTile.innerHTML = "";
+    }, 1000);
 }
 
 function placeSecret2Tile() {
@@ -196,6 +195,9 @@ function placeSecret2Tile() {
     }
     secretTwoTile = document.getElementById(num)
     secretTwoTile.appendChild(secret2)
+    setTimeout(() => {
+        secretTwoTile.innerHTML = "";
+    }, 1000);
 }
 
 function placeSecret3Tile() {
@@ -217,6 +219,9 @@ function placeSecret3Tile() {
     }
     secretThreeTile = document.getElementById(num)
     secretThreeTile.appendChild(secret3)
+    setTimeout(() => {
+        secretThreeTile.innerHTML = "";
+    }, 1000);
 }
 
 function placeBadMole() {
