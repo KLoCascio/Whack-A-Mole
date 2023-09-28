@@ -1,4 +1,3 @@
-// console.log("Hello World!")
 
 let activeMoleTile // Hero.gif
 let badMoleTile // Cactuar.gif
@@ -45,14 +44,20 @@ const modal = document.getElementById("startModal")
 let span = document.getElementsByClassName("close")[0]
 
 const menuContent = document.querySelector(".menu-content")
-menuContent.innerHTML = `<h2>How to Play:</h2>
-<p>Click our Heroes, While Avoiding the Thorns of the Cactuar!</p>
-<p>Collect All Three Secret Heroes to Win!</p><button id="resumeButton">Resume</button>`
-
-
-// if (gameOver == true || gameWin == true) {
-    
-// }
+menuContent.innerHTML = `
+<h1>How to Play</h1>
+    <p>Click our Heroes, but avoid clicking the Cactuar.</p>
+<h1>Point Values</h1>
+    <div id="pointValues">
+    <img src="./assets/Hero.gif" alt="Hero Gif" /><h2>Cloud Strife</h2><p>+10 Points</p>
+    <img src="./assets/Cactuar.gif" alt="Cactuar Gif" /><h2>Cactuar</h2><p>-10 Points</p>
+    </div>
+<h1> How to Win</h1>
+    <div id="secrets-menu">
+    <img src="./assets/Secret1.gif" alt="Vivi Trophy" /> <img src="./assets/Secret2.gif" alt="Moogle Trophy" /> <img src="./assets/Secret3.gif" alt="Sora Trophy" />
+    </div>
+    <p>Earn 100 Points!</p>
+    <p>Collect All Three Secret Heroes to Win!</p><button id="resumeButton">Resume</button>`
 
 const resumeButton = document.querySelector("#resumeButton")
 resumeButton.onclick = function() {
@@ -75,7 +80,15 @@ function startGame() {
         tile.addEventListener("click", pickTile)
         document.querySelector("#board").appendChild(tile)
     }
-
+    if (score != 0) {
+        score = 0
+    }
+    if (secrets != 0) {
+        secrets = 0
+    }
+    if (gameOver) {
+        gameOver = false
+    }
     winner = false
     placeMoleInterval = setInterval(placeMole, 2000)
     placeBadMoleInterval = setInterval(placeBadMole, 1000)
@@ -87,9 +100,21 @@ function startGame() {
 function endGame() {
     clearInterval(placeMoleInterval)
     clearInterval(placeBadMoleInterval)
-    menuContent.innerHTML = `<h1> YOU WIN!</h1>`
+    menuContent.innerHTML = `<div id="winningMessage">
+    <h1>YOU WIN!</h1>
+    <img src="./assets/CloudVictory.gif" alt="Cloud Victory Pose Gif" />
+    <button id="replayButton">Replay?</button>
+    </div>`
     modal.style.display = "block"
+    let victorySound = document.querySelector("#victory-sound")
+    victorySound.play()
+    replayBtn = document.querySelector("#replayButton")
+    replayBtn.addEventListener("click", function () {
+        location.reload()
+    })
 }
+
+
 
 function clearTiles() {
     if (oneCollected && secretOneTile.contains(secret1)) {
@@ -109,7 +134,7 @@ function getRandomTile() {
     return num.toString()
 }
 
-// Placing the Moles and Secrets
+
 function placeMole() {
     if (gameOver) {
         return
@@ -214,21 +239,18 @@ function placeBadMole() {
     badMoleTile.appendChild(badMole)
 }
 
-// Click Good += 10 points, Bad -=10 points
 function pickTile() {
     if (gameOver || winner) {
         return
     }
-    if (this == activeMoleTile && !activeMoleTile.clicked) {
-        score += 50
-        activeMoleTile.clicked = true
+    if (this == activeMoleTile) {
+        score += 10
         document.querySelector("#score").innerText = score.toString()
-        //CLEAR THE TILE NEEDED
         activeMoleTile.removeChild(mole)
         if (oneCollected &&
             twoCollected &&
             threeCollected &&
-            score == 100) {
+            score >= 100) {
                 endGame()
             }
     } else if (this == secretOneTile && !secretOneTile.clicked) {
@@ -273,11 +295,10 @@ function pickTile() {
             score == 100) {
                 endGame()
             }
-    } else if (this == badMoleTile && !badMoleTile.clicked) {
+    } else if (this == badMoleTile) {
         score -= 10
-        badMoleTile.clicked = true
         document.querySelector("#score").innerText = score.toString()
-        // CLEAR THE TILE NEEDED
+        badMoleTile.removeChild(badMole)
         if (score < 0){
             document.querySelector("#score").innerText = "Game Over"
             gameOver = true
@@ -285,13 +306,3 @@ function pickTile() {
         }
     }
 }
-
-// function gameWin() {
-//     if (oneCollected && twoCollected && threeCollected && score == 100) {
-//             winner = true
-
-//     }
-// }
-
-console.log(winner)
-console.log(oneCollected)

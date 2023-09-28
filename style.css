@@ -66,7 +66,8 @@ main {
 
 
 /* InfoBoard Score and Secrets */
-#infoBoard, #desc {
+#infoBoard,
+#desc {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -77,27 +78,12 @@ main {
     -webkit-user-drag: none;
     -webkit-user-sselect: none;
     -moz-user-select: none;
-    
 }
 
 .info-column {
     text-align: center;
     flex: 1;
     /* border: 1px solid white; */
-}
-
-#pauseBtn {
-    font-family: 'Orbitron', sans-serif;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    color: white; 
-    padding: 10px 30px;
-}
-
-#pauseBtn:hover {
-    background-color: rgba(0, 88, 176, 1);
-    border: 1px solid white;
-    border-radius: 10px;
 }
 
 #secrets-display img {
@@ -136,10 +122,10 @@ main {
     height: 100%; 
     overflow: auto;
     background-color: rgba(0,0,0,0.8);
-  }
+}
 
   /* Modal Content/Box */
-  .menu-content {
+.menu-content {
     background-color: rgba(0, 88, 176, 1);
     border: 1px solid white;
     border-radius: 10px;
@@ -147,37 +133,100 @@ main {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-  }
+}
   
-  #resumeButton {
+button {
     font-family: 'Orbitron', sans-serif;
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    color: white; 
+    color: white;
     padding: 10px 30px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-  }
+}
 
-  #resumeButton:hover {
+button:hover {
     background-color: rgba(0, 88, 176, 1);
     border: 1px solid white;
     border-radius: 10px;
 }
 
+#resumeButton {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#replayButton {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#replayButton:hover {
+    transform: scale(1.2);
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
   /* The Close Button */
-  .close {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
+}
   
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
+#winningMessage {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    grid-template-rows: repeat(5, 1fr);
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url("./assets/CloudBG.jpeg");
+    background-size: cover;
+    background-size: stretch;
+    background-repeat: no-repeat;
+}
+
+#winningMessage h1 {
+    font-size: 60px;
+}
+
+#pointValues, 
+#secrets-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0, 88, 176, 1);
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-sselect: none;
+    -moz-user-select: none;
+}
+
+#secrets-menu img {
+    height: 180px;
+    width: 90px;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-sselect: none;
+    -moz-user-select: none;
+}
+
+#pointValues img {
+    user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-sselect: none;
+    -moz-user-select: none;
+}
