@@ -137,7 +137,7 @@ main {
     overflow: auto;
     background-color: rgba(0,0,0,0.8);
   }
-  
+
   /* Modal Content/Box */
   .menu-content {
     background-color: rgba(0, 88, 176, 1);
@@ -149,6 +149,23 @@ main {
     width: 80%; /* Could be more or less, depending on screen size */
   }
   
+  #resumeButton {
+    font-family: 'Orbitron', sans-serif;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: white; 
+    padding: 10px 30px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #resumeButton:hover {
+    background-color: rgba(0, 88, 176, 1);
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
   /* The Close Button */
   .close {
     color: #aaa;

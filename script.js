@@ -7,10 +7,11 @@ let secretTwoTile // Secret2.gif
 let secretThreeTile // Secret3.gif
 
 let score = 0
-let gameOver = false
 let secrets = 0
+let gameOver = false
+let winner
 
-// global secret values
+// global mole values
 let mole
 let badMole
 let secret1
@@ -37,31 +38,32 @@ window.onload = function() {
             console.log("Pause Clicked")
           modal.style.display = "block"
         }
-    } else {
-        console.log("pauseBtn not found")
     }
 }
 
 const modal = document.getElementById("startModal")
 let span = document.getElementsByClassName("close")[0]
 
-const modalContent = document.querySelector(".menu-content")
-modalContent.innerHTML = `<h2>How to Play:</h2>
+const menuContent = document.querySelector(".menu-content")
+menuContent.innerHTML = `<h2>How to Play:</h2>
 <p>Click our Heroes, While Avoiding the Thorns of the Cactuar!</p>
-<p>Collect All Three Secret Heroes to Win!</p>`
+<p>Collect All Three Secret Heroes to Win!</p><button id="resumeButton">Resume</button>`
 
 
 // if (gameOver == true || gameWin == true) {
     
 // }
 
+const resumeButton = document.querySelector("#resumeButton")
+resumeButton.onclick = function() {
+    modal.style.display = "none"
+}
+
 span.onclick = function() {
-    console.log("Close Clicked")
   modal.style.display = "none"
 }
 window.onclick = function(event) {
   if (event.target == modal) {
-    console.log("Window Clicked")
     modal.style.display = "none"
   }
 }
@@ -74,11 +76,32 @@ function startGame() {
         document.querySelector("#board").appendChild(tile)
     }
 
+    winner = false
     placeMoleInterval = setInterval(placeMole, 2000)
     placeBadMoleInterval = setInterval(placeBadMole, 1000)
-    placeSecret1Interval = setInterval(placeSecret1Tile, 10000)
-    placeSecret2Interval = setInterval(placeSecret2Tile, 20000)
-    placeSecret3Interval = setInterval(placeSecret3Tile, 40000)
+    placeSecret1Interval = setInterval(placeSecret1Tile, 2000)
+    placeSecret2Interval = setInterval(placeSecret2Tile, 2000)
+    placeSecret3Interval = setInterval(placeSecret3Tile, 2000)
+}
+
+function endGame() {
+    clearInterval(placeMoleInterval)
+    clearInterval(placeBadMoleInterval)
+    menuContent.innerHTML = `<h1> YOU WIN!</h1>`
+    modal.style.display = "block"
+}
+
+function clearTiles() {
+    if (oneCollected && secretOneTile.contains(secret1)) {
+        clearInterval(placeSecret1Interval)
+        secretOneTile.removeChild(secret1)
+    } else if (twoCollected && secretTwoTile.contains(secret2)) {
+        clearInterval(placeSecret2Interval)
+        secretTwoTile.removeChild(secret2)
+    } else if (threeCollected && secretThreeTile.contains(secret3)) {
+        clearInterval(placeSecret3Interval)
+        secretThreeTile.removeChild(secret3)
+    }
 }
 
 function getRandomTile() {
@@ -193,15 +216,21 @@ function placeBadMole() {
 
 // Click Good += 10 points, Bad -=10 points
 function pickTile() {
-    if (gameOver) {
+    if (gameOver || winner) {
         return
     }
     if (this == activeMoleTile && !activeMoleTile.clicked) {
-        score += 10
+        score += 50
         activeMoleTile.clicked = true
         document.querySelector("#score").innerText = score.toString()
         //CLEAR THE TILE NEEDED
         activeMoleTile.removeChild(mole)
+        if (oneCollected &&
+            twoCollected &&
+            threeCollected &&
+            score == 100) {
+                endGame()
+            }
     } else if (this == secretOneTile && !secretOneTile.clicked) {
         secrets += 1
         secretOneTile.clicked = true
@@ -210,6 +239,12 @@ function pickTile() {
         let secret1Collected = document.getElementById("display1")
         secret1Collected.classList.add("collected")
         clearTiles()
+        if (oneCollected &&
+            twoCollected &&
+            threeCollected &&
+            score == 100) {
+                endGame()
+            }
     }  else if (this == secretTwoTile && !secretTwoTile.clicked) {
         secrets += 1
         secretTwoTile.clicked = true
@@ -218,6 +253,12 @@ function pickTile() {
         let secret2Collected = document.getElementById("display2")
         secret2Collected.classList.add("collected")
         clearTiles()
+        if (oneCollected &&
+            twoCollected &&
+            threeCollected &&
+            score == 100) {
+                endGame()
+            }
     }  else if (this == secretThreeTile && !secretThreeTile.clicked) {
         secrets += 1
         secretThreeTile.clicked = true
@@ -226,6 +267,12 @@ function pickTile() {
         let secret3Collected = document.getElementById("display3")
         secret3Collected.classList.add("collected")
         clearTiles()
+        if (oneCollected &&
+            twoCollected &&
+            threeCollected &&
+            score == 100) {
+                endGame()
+            }
     } else if (this == badMoleTile && !badMoleTile.clicked) {
         score -= 10
         badMoleTile.clicked = true
@@ -235,22 +282,16 @@ function pickTile() {
             document.querySelector("#score").innerText = "Game Over"
             gameOver = true
             console.log(gameOver)
-
         }
     }
 }
 
-function clearTiles() {
-    if (oneCollected && secretOneTile.contains(secret1)) {
-        clearInterval(placeSecret1Interval)
-        secretOneTile.removeChild(secret1)
-    } else if (twoCollected && secretTwoTile.contains(secret2)) {
-        clearInterval(placeSecret2Interval)
-        secretTwoTile.removeChild(secret2)
-    } else if (threeCollected && secretThreeTile.contains(secret3)) {
-        clearInterval(placeSecret3Interval)
-        secretThreeTile.removeChild(secret3)
-    }
-}
+// function gameWin() {
+//     if (oneCollected && twoCollected && threeCollected && score == 100) {
+//             winner = true
 
+//     }
+// }
+
+console.log(winner)
 console.log(oneCollected)
