@@ -14,23 +14,27 @@
     <body> 
         <div id="desc">
             <h1>Whack-A-Hero</h1>
+        </div>
+        <div id="playArea">
+            <div id="board">
+            </div>
             <button id="pauseBtn">Pause Game</button>
         </div>
-        <div id="board">
-        </div> 
 
         <!-- Restart button, when gameOver == true, or gameWin == true -->
             <div id="startModal" class="modal">
-                <div class="modal-content">
+                <div class="menu-content">
                     <span class="close">&times;</span>
-                    <h2>How to Play:</h2>
-                    <p>Click our Heroes, While Avoiding the Thorns of the Cactuar!</p>
-                    <p>Collect All Three Secret Heroes to Win!</p>
-                    
+                    <div class="menuModal">
+                        
+                    </div>
                     <div class="winning-message" id="winningMessage">
                         <button id="playButton">Play</button>
                     </div>
                 </div>
+            </div>
+            <div id="belowBoard">
+                
             </div>
     </body>
 </main>
@@ -53,6 +57,7 @@
             <h2 id="secrets">0</h2>
             <p>SECRETS COLLECTED</p>
         </div>
+        
     </div>
 </footer>
 <script src="script.js"></script>

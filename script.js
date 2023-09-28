@@ -45,6 +45,16 @@ window.onload = function() {
 const modal = document.getElementById("startModal")
 let span = document.getElementsByClassName("close")[0]
 
+const modalContent = document.querySelector(".menu-content")
+modalContent.innerHTML = `<h2>How to Play:</h2>
+<p>Click our Heroes, While Avoiding the Thorns of the Cactuar!</p>
+<p>Collect All Three Secret Heroes to Win!</p>`
+
+
+// if (gameOver == true || gameWin == true) {
+    
+// }
+
 span.onclick = function() {
     console.log("Close Clicked")
   modal.style.display = "none"
