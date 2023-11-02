@@ -1,4 +1,4 @@
-# U1_MoleProject
+# Whack-A-Mole
 Unit 1 Game Project
 
 Deployment: https://whacka-moleff7.surge.sh/
